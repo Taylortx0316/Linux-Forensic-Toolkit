@@ -1,34 +1,86 @@
+AutoThreatScan Toolkit
 
-# 🛡️ Linux Forensic Toolkit
+AutoThreatScan is an automated toolkit for performing deep forensic analysis and malware detection on Linux-based systems. It integrates network scanning, cron job monitoring, /tmp directory monitoring, user forensics, ClamAV scanning, and summary reporting.
 
-A Bash-based forensic toolkit developed by **Danielle Taylor** (`Taylortx0316`) as part of a cybersecurity Capstone project. This tool is designed for incident response and malware investigation on Linux systems.
+📌 Features
 
-The toolkit automates suspicious behavior detection using:
+Network Analysis: Collects IP information, active connections, and listening ports.
 
-- ✅ [LinPEAS](https://github.com/carlospolop/PEASS-ng)
-- ✅ ClamAV malware scanning
-- ✅ Cron, user, and `/tmp` file analysis
-- ✅ Interactive CLI menu with modular options
-- ✅ Auto-generated forensic report
+Cron Job Monitoring: Logs user and system cron jobs.
 
----
+/tmp Directory Monitoring: Detects new files and generates SHA-256 hashes.
 
-## 📂 Features
+User & Password Forensics: Captures information from /etc/passwd and /etc/shadow.
 
-- 🔍 Automated LinPEAS execution and keyword filtering
-- 🧪 ClamAV signature-based malware scans
-- 📅 Monitors for new cron jobs and recent edits
-- 🔐 Detects new users and `/etc/shadow` hash changes
-- 🧾 Collects and hashes recent `/tmp` file activity
-- 📑 Summary report saved to timestamped folder
+ClamAV Malware Scan: Scans specified directories for malware.
 
----
+Summary Report Generation: Compiles all logs into a structured report.
 
-## 📥 Installation
+🛠️ Installation
 
-Clone the repo and make the script executable:
+# Clone the repository
+git clone https://github.com/your-username/AutoThreatScan.git
+cd AutoThreatScan
 
-```bash
-git clone https://github.com/Taylortx0316/linux-forensic-toolkit.git
-cd linux-forensic-toolkit
-chmod +x linpeas_malware_toolkit.sh
+# Make the script executable
+chmod +x linpeas_malware_toolkit_final.sh
+
+# Run the script with sudo
+sudo bash linpeas_malware_toolkit_final.sh
+
+🚀 Usage
+
+When the script is executed, you will be presented with the following options:
+
+==== LinPEAS Malware Toolkit ====
+1) Network Analysis
+2) Cron Job Monitoring
+3) Monitor /tmp Directory
+4) User & Password Forensics
+5) ClamAV Malware Scan
+6) Generate Summary Report
+7) Exit
+
+Select the desired option to perform a scan or generate a report. All logs are stored in /var/log/AutoThreatScan.
+
+📂 Log File Locations
+
+Log Type
+
+File Location
+
+Network Analysis Logs
+
+/var/log/AutoThreatScan/network_logs.log
+
+Cron Job Monitoring Logs
+
+/var/log/AutoThreatScan/cron_changes.log
+
+/tmp Directory Monitoring
+
+/var/log/AutoThreatScan/tmp_new_files.txt
+
+File Hashes
+
+/var/log/AutoThreatScan/tmp_hashes.txt
+
+User & Password Forensics
+
+/var/log/AutoThreatScan/user_monitor.log
+
+ClamAV Malware Scan
+
+/var/log/AutoThreatScan/clamav_scan.txt
+
+Summary Report
+
+/var/log/AutoThreatScan/summary_report.txt
+
+🔍 Future Improvements
+
+Implement real-time monitoring with inotify for /tmp.
+
+Add Splunk integration for advanced analytics.
+
+Schedule automatic runs with cron jobs.
